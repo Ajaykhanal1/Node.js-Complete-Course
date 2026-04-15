@@ -8,6 +8,8 @@ When making a GET request to `/products/search?q=phone`, the API returns a `404 
 
 The issue occurs when a dynamic route parameter (e.g., `/:id`) is defined **before** a specific route path (e.g., `/search`). Express.js matches routes in the order they are defined. When `/products/:id` comes first, Express interprets `"search"` as an `id` parameter value instead of a path segment.
 
+![Image After Solving the Problem](image.png)
+
 ### ❌ Incorrect Route Order
 
 ```javascript
@@ -30,4 +32,3 @@ app.get('/products/search', (req, res) => {
   res.json(results);
 });
 
-![Image After Solving the Problem](image.png)
